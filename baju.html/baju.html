@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="id">
+<head> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TASERA STORE - Fashion Store</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+*{
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Outfit',sans-serif;
+scroll-behavior:smooth;
+}
+}
+
+body{
+background:#f8f8f8;
+color:#111;
+}
+
+/* DARK MODE */
+
+.dark-mode{
+background:#121212;
+color:white;
+}
+
+.dark-mode header{
+background:#000;
+}
+
+.dark-mode .card{
+background:#1e1e1e;
+color:white;
+}
+
+.dark-mode .desc{
+color:#ccc;
+}
+
+.dark-mode .modal-content{
+background:#1e1e1e;
+color:white;
+}
+
+.dark-mode footer{
+background:#000;
+}
+
+.dark-mode .struk-content{
+background:#1e1e1e;
+color:white;
+}
+
+.dark-mode .struk-header{
+background:#1e1e1e;
+border-bottom:2px dashed #555;
+}
+
+.dark-mode .struk-body{
+background:#1e1e1e;
+color:white;
+}
+
+.dark-mode .struk-footer{
+background:#1e1e1e;
+border-top:2px dashed #555;
+}
+
+.dark-mode .struk-line{
+border-top:1px dashed #666;
+}
+
+.dark-mode .struk-total{
+border-top:2px dashed #888;
+}
+
+/* HEADER */
+
+header{
+background:#111;
+color:white;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+header h1{
+font-size:30px;
+font-weight:700;
+letter-spacing:2px;
+}
+
+nav a{
+color:white;
+margin-left:20px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.right-menu{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.cart-icon{
+position:relative;
+cursor:pointer;
+}
+
+.cart-count{
+position:absolute;
+top:-8px;
+right:-10px;
+background:red;
+color:white;
+font-size:12px;
+border-radius:50%;
+padding:2px 6px;
+}
+
+#themeToggle{
+padding:10px 14px;
+background:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+background:
+linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url('https://images.unsplash.com/photo-1441986300917-64674bd600d8');
+background-size:cover;
+background-position:center;
+color:white;
+text-align:center;
+padding:120px 20px;
+}
+
+.hero h2{
+font-size:45px;
+}
+
+.hero p{
+margin-top:15px;
+font-size:20px;
+}
+
+/* PRODUK */
+
+.container{
+padding:50px 20px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 4px 20px rgba(0,0,0,.08);
+transition:.3s;
+
+display:flex;
+flex-direction:column;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+.card img{
+width:100%;
+height:300px;
+object-fit:contain;
+background:#fff;
+padding:10px;
+}
+}
+
+.card-body{
+padding:15px;
+
+display:flex;
+flex-direction:column;
+flex:1;
+}
+
+.card-body h3{
+font-size:20px;
+}
+
+.desc{
+font-size:14px;
+color:#666;
+margin:10px 0;
+line-height:1.5;
+}
+
+.price{
+color:#25D366;
+font-size:18px;
+font-weight:bold;
+margin-top:auto;
+margin-bottom:10px;
+}
+
+.btn-group{
+display:flex;
+gap:10px;
+}
+
+button{
+padding:10px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+transition:.3s;
+}
+
+.cart-btn{
+width:50px;
+background:#111;
+color:white;
+}
+
+.buy-btn{
+flex:1;
+background:#25D366;
+color:white;
+font-weight:bold;
+}
+
+button:hover{
+opacity:.9;
+}
+
+/* MODAL */
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.6);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.modal-content{
+background:white;
+padding:25px;
+border-radius:12px;
+width:90%;
+max-width:400px;
+}
+
+select,input{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+/* STRUK */
+
+.struk-modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.7);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.struk-content{
+width:360px;
+background:white;
+border-radius:10px;
+overflow:hidden;
+font-family:'Courier New', monospace;
+color:#000;
+transition:.3s;
+}
+
+.struk-header{
+text-align:center;
+padding:20px;
+border-bottom:2px dashed #999;
+}
+
+.struk-body{
+padding:20px;
+font-size:14px;
+}
+
+.struk-footer{
+text-align:center;
+padding:20px;
+border-top:2px dashed #999;
+}
+
+.struk-item{
+display:flex;
+justify-content:space-between;
+margin:6px 0;
+gap:10px;
+}
+
+.struk-line{
+border-top:1px dashed #999;
+margin:15px 0;
+}
+
+.struk-total{
+margin-top:15px;
+padding-top:10px;
+border-top:2px dashed #000;
+font-size:18px;
+font-weight:bold;
+}
+
+/* ABOUT */
+
+.about{
+background:#111;
+color:white;
+padding:60px 20px;
+text-align:center;
+}
+
+.about p{
+max-width:800px;
+margin:auto;
+line-height:1.8;
+font-size:18px;
+}
+
+/* FOOTER */
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+font-size:30px;
+padding:15px;
+border-radius:50%;
+z-index:999;
+}
+
+iframe{
+border-radius:15px;
+margin-top:20px;
+}
+
+@media(max-width:768px){
+
+.hero h2{
+font-size:30px;
+}
+
+header{
+flex-direction:column;
+gap:15px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+<h1>TASERA STORE</h1>
+
+<nav>
+<a href="#produk">Produk</a>
+<a href="#tentang">Tentang</a>
+<a href="#lokasi">Lokasi</a>
+</nav>
+
+<div class="right-menu">
+
+<button id="themeToggle">🌙</button>
+
+<div class="cart-icon">
+<i class="fas fa-shopping-cart fa-2x"></i>
+<span class="cart-count" id="cartCount">0</span>
+</div>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<h2>SELAMAT DATANG DI TASERA STORE</h2>
+
+<p>Menyediakan berbagai pilihan kaos dan kemeja dengan desain modern,bahan nyaman,dan kualitas terbaik.
+    Hadir untuk melenkapi penampilan anda agar tampil lebih stylish dan percaya diri.
+</p>
+
+</section>
+
+<section class="container" id="produk">
+
+<h2 style="text-align:center;margin-bottom:30px;">
+Produk Kami
+</h2>
+
+<div class="products" id="productContainer"></div>
+
+</section>
+
+<!-- MODAL CHECKOUT -->
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<h3 id="namaProduk"></h3>
+
+<label>Size</label>
+
+<select id="size">
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+</select>
+
+<label>Warna</label>
+
+<select id="warna">
+<option>Hitam</option>
+<option>Putih</option>
+<option>Navy</option>
+<option>Coklat</option>
+<option>Hijau</option>
+</select>
+
+<label>Pembayaran</label>
+
+<select id="Pembayaran">
+<option>BCA</option>
+<option>BRI</option>
+<option>BNI</option>
+<option>DANA</option>
+<option>OVO</option>
+<option>GOPAY</option>
+</select>
+
+<label>Alamat Lengkap</label>
+
+<input 
+type="text" 
+id="alamat" 
+placeholder="Masukkan alamat lengkap">
+
+<label>Jumlah</label>
+
+<input 
+type="number" 
+id="jumlah" 
+value="1" 
+min="1">
+
+<button onclick="checkout()" class="buy-btn">
+Checkout
+</button>
+
+<br><br>
+
+<button 
+onclick="tutup()" 
+style="width:100%;background:red;color:white;">
+Batal
+</button>
+
+</div>
+
+</div>
+
+<!-- STRUK -->
+
+<div class="struk-modal" id="strukModal">
+
+<div class="struk-content">
+
+<div class="struk-header">
+
+<h2>TASERA STORE</h2>
+
+<p>Fashion Modern Indonesia</p>
+
+</div>
+
+<div class="struk-body">
+
+<div id="strukDetail"></div>
+
+</div>
+
+<div class="struk-footer">
+
+<button onclick="window.print()">
+Cetak
+</button>
+
+<button onclick="tutupStruk()">
+Tutup
+</button>
+
+<p style="margin-top:10px;font-size:12px;">
+Terima kasih telah berbelanja 
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ABOUT -->
+
+<section class="about" id="tentang">
+
+<h2 style="margin-bottom:20px;">
+Tentang Kami
+</h2>
+
+<p>
+TASERA STORE hadir untuk memberikan produk fashion terbaik dengan harga terjangkau tanpa mengurangi kualitas. Kepuasan pelanggan adalah prioritas kami,  kami selalu mengutamakan pelayanan terbaik dan produk pilihan yang cocok untuk berbagai aktivitas, mulai dari santai, nongkrong, hingga outfit harian favoritmu.
+Tampil lebih keren dan percaya diri bersama TASERA STORE 
+</p>
+
+</section>
+
+<!-- LOKASI -->
+
+<section class="container" id="lokasi">
+
+<h2 style="text-align:center;">
+Lokasi Kami
+</h2>
+
+<p style="
+text-align:center;
+font-size:18px;
+margin-top:15px;
+font-weight:bold;
+">
+Perumahan Kota Serang Baru Blok A14 No 2
+</p>
+
+<iframe 
+src="https://maps.google.com/maps?q=Perumahan%20Kota%20Serang%20Baru%20Blok%20A14%20No%202&t=&z=17&ie=UTF8&iwloc=&output=embed"
+width="100%"
+height="350"
+style="border:0;">
+</iframe>
+
+</section>
+
+<footer>
+<p>© TASERA STORE east 2026</p>
+</footer>
+
+<a href="https://wa.me/6281356445932"
+class="whatsapp"
+target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+
+let cart = 0;
+
+let currentOrder = {};
+
+const products = [
+
+{
+name:"Flannel Classy Long Sleeve",
+price:350000,
+desc:"Kemeja flannel lengan panjang dengan desain classy dan modern. Cocok untuk outfit casual maupun semi formal dengan bahan nyaman dan stylish dipakai sehari-hari.",
+img:"classy_flanel_long_sleve.jpg"
+},
+
+{
+name:"Flannel Retro Striped Short Sleeve",
+price:250000,
+desc:"Kemeja lengan pendek motif garis retro dengan nuansa vintage yang aesthetic. Nyaman dipakai dan cocok untuk gaya santai maupun nongkrong.",
+img:"retro_short_sleve.jpg"
+},
+
+{
+name:"Ribknit Short Sleeve",
+price:300000,
+desc:"Kaos knit premium dengan tekstur rib yang lembut dan adem dipakai. Memberikan tampilan clean, elegan, dan modern.",
+img:"short_knit.jpg"
+},
+
+{
+name:"Classy T-Shirt",
+price:200000,
+desc:"Kaos polos classy dengan desain simpel dan elegan. Mudah dipadukan dengan berbagai outfit untuk tampil clean dan stylish.",
+img:"classy_shirt_short_sleve.jpg"
+},
+
+{
+name:"Y2K Shirt",
+price:200000,
+desc:"Kemeja bergaya Y2K dengan desain trendi dan modern. Cocok buat outfit aesthetic dan streetwear kekinian.",
+img:"y2k.jpg"
+},
+
+{
+name:"Cable Knit",
+price:250000,
+desc:"Sweater cable knit premium dengan bahan lembut dan hangat. Memberikan kesan old money dan elegant look.",
+img:"cable knit.jpg"
+},
+
+{
+name:"Polo Shirt",
+price:200000,
+desc:"Kaos polo dengan desain simpel dan berkelas. Cocok untuk gaya casual maupun semi formal sehari-hari.",
+img:"polo_shirt.jpeg"
+},
+
+{
+name:"Stussy Shirt",
+price:200000,
+desc:"Kaos streetwear dengan desain Stussy yang trendy dan stylish. Menggunakan bahan cotton combed yang nyaman dan adem.",
+img:"stussy_shirt.jpg"
+},
+
+{
+name:"Plaid Tartan Flannel",
+price:250000,
+desc:"Kemeja flannel motif tartan klasik dengan tampilan clean dan vintage. Cocok untuk outfit harian maupun layering.",
+img:"plaid_tartan.jpg"
+},
+
+{
+name:"Block Shirt",
+price:250000,
+desc:"Kaos dengan desain block style modern yang simple tapi standout. Nyaman dipakai untuk daily outfit.",
+img:"Blockshirt.jpg"
+},
+
+{
+name:"Horizontal Stripe Flannel",
+price:190000,
+desc:"Flannel motif garis horizontal dengan desain casual dan modern. Cocok untuk gaya santai dan outfit harian.",
+img:"horizonal_striped.jpg"
+},
+
+{
+name:"Vans Shirt",
+price:200000,
+desc:"Kaos Vans dengan desain casual streetwear yang keren dan modern. Menggunakan bahan nyaman untuk dipakai sehari-hari.",
+img:"vans_shirt.jpg"
+},
+
+{
+name:"Waffle Knit",
+price:280000,
+desc:"Kaos waffle knit dengan tekstur unik dan premium. Memberikan tampilan clean, classy, dan nyaman dipakai.",
+img:"waffle.jpg"
+},
+
+{
+name:"Ringer Shirt",
+price:150000,
+desc:"Kaos ringer dengan aksen warna kontras yang vintage dan stylish. Cocok untuk outfit casual harian.",
+img:"ringer shirt.jpg"
+},
+
+{
+name:"Ellesse Shirt",
+price:200000,
+desc:"Kaos Ellesse bergaya sporty dan streetwear dengan bahan adem dan nyaman dipakai sepanjang hari.",
+img:"Ellesse T-Shirt.jpg"
+}
+
+];
+
+const container = document.getElementById("productContainer");
+
+products.forEach((p)=>{
+
+container.innerHTML += `
+
+<div class="card">
+
+<img src="${p.img}" alt="${p.name}">
+
+<div class="card-body">
+
+<h3>${p.name}</h3>
+
+<p class="desc">${p.desc}</p>
+
+<p class="price">
+Rp ${p.price.toLocaleString()}
+</p>
+
+<div class="btn-group">
+
+<button class="cart-btn"
+onclick="addToCart('${p.name}')">
+
+<i class="fas fa-cart-plus"></i>
+
+</button>
+
+<button class="buy-btn"
+onclick="beli('${p.name}',${p.price})">
+
+Beli
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+function addToCart(name){
+
+cart++;
+
+document.getElementById("cartCount").innerText = cart;
+
+alert(name + " masuk ke keranjang");
+
+}
+
+function beli(name,price){
+
+currentOrder = {
+name,
+price
+};
+
+document.getElementById("namaProduk").innerText = name;
+
+document.getElementById("modal").style.display = "flex";
+
+}
+
+function tutup(){
+
+document.getElementById("modal").style.display = "none";
+
+}
+
+function checkout(){
+
+let qty = document.getElementById("jumlah").value;
+
+let size = document.getElementById("size").value;
+
+let warna = document.getElementById("warna").value;
+
+let pembayaran = document.getElementById("Pembayaran").value;
+
+let alamat = document.getElementById("alamat").value;
+
+if(alamat == ""){
+
+alert("Alamat wajib diisi!");
+
+return;
+
+}
+
+let total = currentOrder.price * qty;
+
+showStruk(
+currentOrder.name,
+size,
+warna,
+qty,
+total,
+pembayaran,
+alamat
+);
+
+tutup();
+
+}
+
+function showStruk(
+nama,
+size,
+warna,
+qty,
+total,
+pembayaran,
+alamat
+){
+
+const date = new Date().toLocaleString('id-ID');
+
+const no = 'TASERA' + Date.now().toString().slice(-6);
+
+document.getElementById("strukDetail").innerHTML = `
+
+<div class="struk-item">
+<span>No</span>
+<span>${no}</span>
+</div>
+
+<div class="struk-item">
+<span>Tanggal</span>
+<span>${date}</span>
+</div>
+
+<div class="struk-line"></div>
+
+<div class="struk-item">
+<span>Produk</span>
+<span>${nama}</span>
+</div>
+
+<div class="struk-item">
+<span>Size</span>
+<span>${size}</span>
+</div>
+
+<div class="struk-item">
+<span>Warna</span>
+<span>${warna}</span>
+</div>
+
+<div class="struk-item">
+<span>Qty</span>
+<span>${qty}</span>
+</div>
+
+<div class="struk-item">
+<span>Pembayaran</span>
+<span>${pembayaran}</span>
+</div>
+
+<div class="struk-item">
+<span>Alamat</span>
+<span>${alamat}</span>
+</div>
+
+<div class="struk-line"></div>
+
+<div class="struk-item">
+<span>Total</span>
+<span>Rp ${total.toLocaleString()}</span>
+</div>
+
+<div class="struk-total">
+
+<div class="struk-item">
+<span>TOTAL BAYAR</span>
+<span>Rp ${total.toLocaleString()}</span>
+</div>
+
+</div>
+
+<div style="
+text-align:center;
+margin-top:20px;
+font-size:13px;
+">
+
+==========================<br>
+TERIMA KASIH SUDAH BELANJA<br>
+DI TASERA STORE <br>
+==========================
+
+</div>
+
+`;
+
+document.getElementById("strukModal").style.display = "flex";
+
+}
+
+function tutupStruk(){
+
+document.getElementById("strukModal").style.display = "none";
+
+}
+
+const themeToggle = document.getElementById("themeToggle");
+
+themeToggle.onclick = function(){
+
+document.body.classList.toggle("dark-mode");
+
+if(document.body.classList.contains("dark-mode")){
+
+themeToggle.innerHTML = "☀️";
+
+}else{
+
+themeToggle.innerHTML = "🌙";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
